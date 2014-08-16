@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+{% block body %}
+<h3>
+<hr>
+<a href="{{url_for('show_all_entries')}}">View all keys</a></h3>
+
+<h3>
+<hr>
+<a name="extract">Extract a key</a></h3>
+
+<form action="{{ url_for('show_all_entries') }}" method="GET">
+
+Search String: <input name="search" size=40>
+<input type="submit" value="Do the search!"><p>
+
+<input type="checkbox" name="exact"> Only return exact matches <p>
+
+</form>
+
+<h3>
+<hr>
+<a name="submit">Submit a key</a></h3>
+<form action="{{ url_for('add_entry') }}" method="POST">
+{% if error %}
+  <h1>{{ error }}!</h1>
+{% endif %}
+<p>
+Enter nickname here: <input name="nick"/></p>
+Enter key here: <p>
+<textarea name="public_key" rows=20 cols=66></textarea></p>
+
+<input type="reset" value="Clear">
+<input type="submit" value="Submit this key to the keyserver!"><p>
+
+</form>
+
+<h3>
+<hr>
+<a name="remove">Remove a key</a></h3>
+
+<form action="faq.html">
+
+Search String: <input name="search" size=40>
+<input type="submit" value="Remove the key!"><p>
+
+</form>
+
+<hr>
+{% endblock %}
